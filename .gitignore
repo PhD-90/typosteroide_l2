@@ -1,0 +1,20 @@
+# --- Documents ENSEIGNANT : ne jamais publier dans le depot des eleves ---
+*_correction.py
+*_corrige.pdf
+*_fiche_prof.pdf
+*_fiche_prof.tex
+prof_live/
+demo_prof/
+_outils/
+PROF_MASTER/
+
+# --- Fichiers generes ---
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.out
+*.toc
+*.cut
+typosteroides_scores.json
+typosteroides_profil.json
