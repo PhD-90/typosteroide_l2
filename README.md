@@ -41,17 +41,90 @@ Prenom.Nom/
 
 ---
 
+## ⚖️ Barème (sur 40)
+
+> ⚠️ **Le barème est volontairement sévère.** Un jeu qui « marche à peu près » ne vaut pas la moyenne.
+> Chaque point se mérite : **tout ce qui n'est pas vérifiable en lançant le jeu ou en lisant le code n'existe pas**.
+
+### 🚫 Conditions éliminatoires (note = **0/40**)
+
+- Le jeu **ne se lance pas** avec `python prenomnom.py` depuis le dossier rendu (erreur au démarrage, fichier manquant, chemin absolu vers *votre* ordinateur…).
+- **Plagiat** entre étudiants, ou code repris d'Internet / d'une IA **sans être déclaré** dans la documentation.
+- Projet **non rendu** ou rendu **plus de 3 jours** après la date limite.
+
+### 📉 Pénalités appliquées **avant** la notation
+
+| Manquement | Pénalité |
+|---|---|
+| Retard | **−6 points par jour entamé** (1 minute de retard = 1 jour) |
+| `.zip` mal nommé (autre chose que `Prenom.Nom.zip`) | −2 |
+| Fichier Python mal nommé (autre chose que `prenomnom.py`) ou plusieurs fichiers `.py` | −2 |
+| Structure du dossier différente de l'exemple | −2 |
+| Fichier de documentation IA absent | −8 |
+| Fichiers inutiles dans le rendu (`__pycache__`, `.venv`, `.idea`, sauvegardes…) | −1 |
+| Dépendance autre que `pygame` et la bibliothèque standard, non justifiée | −2 |
+
+### 🧮 Grille de notation
+
+| Critère | Points | Exigence pour avoir les points |
+|---|:---:|---|
+| **1. Fonctionnement et robustesse** | **10** | |
+| Socle du TD1 complet et sans bug : boucle de jeu, vaisseau, mots qui avancent, collisions, vies | 1 | Tout ou rien |
+| Socle du TD2 complet et sans bug : menu, frappe, ciblage, lasers, score, difficulté progressive | 1 | Tout ou rien |
+| Aucun plantage pendant 10 minutes de jeu, menus compris | 3 | **Un seul plantage = 0/3**, quelle qu'en soit la cause |
+| Aucun bug visible (mot impossible à taper, collision ratée, score faux, texte qui déborde…) | 2 | −0,5 par bug constaté, jusqu'à 0 |
+| Le jeu reste fluide (60 FPS stables), même avec beaucoup d'éléments à l'écran | 1 | Tout ou rien |
+| Fermeture propre (croix, Échap), aucune erreur dans la console | 1 | Un seul message d'erreur ou *traceback* = 0/1 |
+| Fichiers externes absents ou abîmés gérés sans planter (`mots.txt`, scores, sons…) | 1 | Tout ou rien |
+| **2. Fonctionnalités réalisées en autonomie** | **10** | Voir le [catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf). Seules les fonctionnalités **finies, sans bug et absentes des TD** comptent |
+| Richesse : nombre de fonctionnalités ajoutées | 3 | Moins de 3 fonctionnalités = 0/3 ; 3 points à partir de 8 fonctionnalités |
+| Variété : fonctionnalités prises dans au moins 4 sections différentes du catalogue | 2 | Tout ou rien |
+| Ambition : au moins une fonctionnalité ★★★ du catalogue, ou équivalente | 2 | Tout ou rien ; une ★★★ inachevée = 0 |
+| Intégration : les ajouts forment un jeu cohérent et équilibré, jouable du début à la fin | 1 | Ajouts empilés sans cohérence = 0/1 |
+| Finition : retours visuels et sonores, textes sans faute d'orthographe, interface lisible | 2 | −0,5 par défaut constaté |
+| **3. Qualité du code** | **10** | |
+| Chaque classe et chaque fonction a une docstring utile | 2 | Une seule fonction sans docstring = 0/2 |
+| Commentaires utiles sur les passages délicats (ni absents, ni paraphrase du code) | 1 | |
+| Aucun « nombre magique » : toutes les valeurs réglables sont des constantes nommées | 1 | Tout ou rien |
+| Noms clairs et cohérents, respect de la PEP 8 | 1 | −0,25 par défaut constaté |
+| Pas de code mort, pas de `print` de débogage, pas de copier-coller de blocs | 1 | −0,25 par défaut constaté |
+| Architecture objet : classes à responsabilité unique, héritage utilisé à bon escient | 2 | −0,5 par défaut constaté |
+| Pas de variable globale modifiée, pas de fonction de plus de 50 lignes | 1 | −0,25 par défaut constaté |
+| Fichier organisé en sections claires (imports, constantes, fonctions, classes, lancement) | 1 | Tout ou rien |
+| **4. Documentation de l'usage de l'IA** | **10** | |
+| Prompts recopiés **intégralement** (pas résumés) | 2 | Un seul prompt résumé = 0/2 |
+| Extraits de code générés recopiés et localisés dans le code final (classe, fonction **et numéros de lignes** dans `prenomnom.py`) | 2 | Un seul extrait sans numéros de lignes exacts = 0/2 |
+| Explication précise des **modifications** apportées et de leur raison | 2 | « J'ai adapté le code » sans détail = 0/2 |
+| Esprit critique : erreurs, limites ou mauvaises propositions de l'IA repérées et corrigées | 2 | Aucune critique de l'IA = 0/2 |
+| Contexte de chaque demande : outil utilisé, objectif, problème à résoudre | 1 | Tout ou rien |
+| Document clair, structuré et sans faute d'orthographe | 1 | −0,25 par défaut constaté |
+| **5. Engagement et participation en séance de TP** | **5** | Évalué par l'enseignant à chaque séance de TP |
+| Présence et ponctualité à toutes les séances de TP | 1 | Une seule absence non justifiée ou un retard de plus de 10 minutes = 0/1 |
+| Travail effectif sur le projet pendant toute la séance (pas de téléphone, de réseaux sociaux ni d'autre matière) | 2 | −0,5 par rappel à l'ordre |
+| Avancement visible à chaque séance : l'enseignant doit constater une progression du projet | 1 | Une seule séance sans avancement = 0/1 |
+| Participation : questions pertinentes, explication de son code à l'oral, entraide sans copie | 1 | Aucune participation = 0/1 |
+| **Total** | **45** | Ramené sur 40 : **note finale = total × 40 / 45** |
+
+### 🎤 Vérification de la compréhension
+
+L'enseignant peut demander à n'importe quel étudiant d'**expliquer une ligne ou une fonction** de son code, à l'oral.
+
+- Si l'étudiant **ne sait pas expliquer** un passage, la fonctionnalité correspondante est considérée comme **non réalisée** (0 point sur la ligne du barème).
+- Si l'étudiant ne sait expliquer **aucune partie importante** du code, la note est **plafonnée à 10/40**.
+
+> 💡 La note finale est arrondie **au demi-point inférieur**. Une note négative est ramenée à 0.
+
+---
+
 ## 🗓️ Organisation du module (14 h)
 
 | Séance | Durée | Contenu |
 |---|---|---|
 | **TD1** | 2 h | Boucle de jeu, vaisseau, mots qui foncent vers le joueur, collisions, vies |
 | TD2 | 2 h | Menu, frappe au clavier, ciblage, lasers, score, difficulté progressive |
-| TP1 | 4 h | Effets visuels et sonores, dictionnaire de mots externe |
-| TP2 | 3 h | Ennemis spéciaux, bonus, boss |
-| TP3 | 3 h | Sauvegarde des scores, pause, finition et rendu |
+| Projet | 10 h | **En autonomie** : vous enrichissez votre jeu avec les fonctionnalités de votre choix ([catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf)), jusqu'au rendu |
 
-Les fichiers de chaque séance sont ajoutés à ce dépôt au fur et à mesure.
+Les fichiers des TD sont ajoutés à ce dépôt au fur et à mesure.
 
 ---
 
