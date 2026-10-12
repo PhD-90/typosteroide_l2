@@ -68,42 +68,37 @@ Prenom.Nom/
 
 | Critère | Points | Exigence pour avoir les points |
 |---|:---:|---|
-| **1. Fonctionnement et robustesse** | **10** | |
+| **1. Fonctionnement et robustesse** | **9** | |
 | Socle du TD1 complet et sans bug : boucle de jeu, vaisseau, mots qui avancent, collisions, vies | 1 | Tout ou rien |
 | Socle du TD2 complet et sans bug : menu, frappe, ciblage, lasers, score, difficulté progressive | 1 | Tout ou rien |
 | Aucun plantage pendant 10 minutes de jeu, menus compris | 3 | **Un seul plantage = 0/3**, quelle qu'en soit la cause |
 | Aucun bug visible (mot impossible à taper, collision ratée, score faux, texte qui déborde…) | 2 | −0,5 par bug constaté, jusqu'à 0 |
 | Le jeu reste fluide (60 FPS stables), même avec beaucoup d'éléments à l'écran | 1 | Tout ou rien |
-| Fermeture propre (croix, Échap), aucune erreur dans la console | 1 | Un seul message d'erreur ou *traceback* = 0/1 |
-| Fichiers externes absents ou abîmés gérés sans planter (`mots.txt`, scores, sons…) | 1 | Tout ou rien |
-| **2. Fonctionnalités réalisées en autonomie** | **10** | Voir le [catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf). Seules les fonctionnalités **finies, sans bug et absentes des TD** comptent |
+| Fermeture propre (croix, Échap), aucune erreur dans la console, fichiers externes absents ou abîmés gérés sans planter (`mots.txt`, scores, sons…) | 1 | Un seul message d'erreur ou *traceback* = 0/1 |
+| **2. Fonctionnalités réalisées en autonomie** | **9** | Voir le [catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf). Seules les fonctionnalités **finies, sans bug et absentes des TD** comptent |
 | Richesse : nombre de fonctionnalités ajoutées | 3 | Moins de 3 fonctionnalités = 0/3 ; 3 points à partir de 8 fonctionnalités |
 | Variété : fonctionnalités prises dans au moins 4 sections différentes du catalogue | 2 | Tout ou rien |
 | Ambition : au moins une fonctionnalité ★★★ du catalogue, ou équivalente | 2 | Tout ou rien ; une ★★★ inachevée = 0 |
-| Intégration : les ajouts forment un jeu cohérent et équilibré, jouable du début à la fin | 1 | Ajouts empilés sans cohérence = 0/1 |
-| Finition : retours visuels et sonores, textes sans faute d'orthographe, interface lisible | 2 | −0,5 par défaut constaté |
-| **3. Qualité du code** | **10** | |
+| Cohérence et finition : un jeu équilibré et jouable du début à la fin, retours visuels et sonores, textes sans faute, interface lisible | 2 | −0,5 par défaut constaté ; ajouts empilés sans cohérence = 0/2 |
+| **3. Qualité du code** | **8** | |
 | Chaque classe et chaque fonction a une docstring utile | 2 | Une seule fonction sans docstring = 0/2 |
 | Commentaires utiles sur les passages délicats (ni absents, ni paraphrase du code) | 1 | |
 | Aucun « nombre magique » : toutes les valeurs réglables sont des constantes nommées | 1 | Tout ou rien |
-| Noms clairs et cohérents, respect de la PEP 8 | 1 | −0,25 par défaut constaté |
-| Pas de code mort, pas de `print` de débogage, pas de copier-coller de blocs | 1 | −0,25 par défaut constaté |
+| Noms clairs et cohérents, pas de code mort, pas de `print` de débogage, pas de copier-coller de blocs | 1 | −0,25 par défaut constaté |
 | Architecture objet : classes à responsabilité unique, héritage utilisé à bon escient | 2 | −0,5 par défaut constaté |
-| Pas de variable globale modifiée, pas de fonction de plus de 50 lignes | 1 | −0,25 par défaut constaté |
-| Fichier organisé en sections claires (imports, constantes, fonctions, classes, lancement) | 1 | Tout ou rien |
-| **4. Documentation de l'usage de l'IA** | **10** | |
+| Fichier organisé en sections claires (imports, constantes, fonctions, classes, lancement), pas de variable globale modifiée, pas de fonction de plus de 50 lignes | 1 | −0,25 par défaut constaté |
+| **4. Documentation de l'usage de l'IA** | **9** | |
 | Prompts recopiés **intégralement** (pas résumés) | 2 | Un seul prompt résumé = 0/2 |
 | Extraits de code générés recopiés et localisés dans le code final (classe, fonction **et numéros de lignes** dans `prenomnom.py`) | 2 | Un seul extrait sans numéros de lignes exacts = 0/2 |
 | Explication précise des **modifications** apportées et de leur raison | 2 | « J'ai adapté le code » sans détail = 0/2 |
 | Esprit critique : erreurs, limites ou mauvaises propositions de l'IA repérées et corrigées | 2 | Aucune critique de l'IA = 0/2 |
-| Contexte de chaque demande : outil utilisé, objectif, problème à résoudre | 1 | Tout ou rien |
-| Document clair, structuré et sans faute d'orthographe | 1 | −0,25 par défaut constaté |
+| Contexte de chaque demande (outil utilisé, objectif, problème à résoudre) ; document clair, structuré et sans faute | 1 | −0,25 par défaut constaté |
 | **5. Engagement et participation en séance de TP** | **5** | Évalué par l'enseignant à chaque séance de TP |
 | Présence et ponctualité à toutes les séances de TP | 1 | Une seule absence non justifiée ou un retard de plus de 10 minutes = 0/1 |
 | Travail effectif sur le projet pendant toute la séance (pas de téléphone, de réseaux sociaux ni d'autre matière) | 2 | −0,5 par rappel à l'ordre |
 | Avancement visible à chaque séance : l'enseignant doit constater une progression du projet | 1 | Une seule séance sans avancement = 0/1 |
 | Participation : questions pertinentes, explication de son code à l'oral, entraide sans copie | 1 | Aucune participation = 0/1 |
-| **Total** | **45** | Ramené sur 40 : **note finale = total × 40 / 45** |
+| **Total** | **40** | |
 
 ### 🎤 Vérification de la compréhension
 
