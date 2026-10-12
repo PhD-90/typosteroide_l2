@@ -137,7 +137,9 @@ class Joueur:
         """Oriente le canon vers un point de l'ecran."""
         # TODO 7a : self.direction = vecteur UNITAIRE du joueur vers le point.
         #   Attention : on ne peut pas normaliser un vecteur nul !
-        pass
+        vecteur = point - self.position
+        if vecteur.length() > 0:
+            self.direction = vecteur.normalize()
 
     def bout_du_canon(self):
         """Point d'ou partent les lasers."""
@@ -146,11 +148,13 @@ class Joueur:
     def dessiner(self, ecran):
         pygame.draw.circle(ecran, CYAN, self.position, self.rayon, 2)
         # TODO 7b : Dessiner le triangle oriente selon self.direction :
-        #   pointe = position + direction * 22,
-        #   ailes  = position + direction tournee de +/-140 degres * 15.
-        #   Aide : vecteur.rotate(angle_en_degres)
-        x, y = self.position
-        pygame.draw.polygon(ecran, BLANC, [(x, y - 18), (x - 13, y + 12), (x + 13, y + 12)])
+       
+        d = self.direction 
+        pointe = self.position + d * (self.rayon + 6)
+        base_gauche = self.position + d.rotate(150) * 18
+        base_droite = self.position + d.rotate(-150) * 18
+        
+        pygame.draw.polygon(ecran, CYAN, [pointe, base_gauche, base_droite], 0)
 
 
 # =============================================================================
@@ -215,8 +219,21 @@ class Mot:
         #   texte[:tape] en ORANGE puis texte[tape:] en couleur_reste,
         #   l'ensemble centre sur self.position, sur un rectangle de fond
         #   CADRE. Si est_cible : entourer ce rectangle d'un cadre ORANGE.
-        image = police.render(self.texte, True, couleur_reste)
-        ecran.blit(image, image.get_rect(center=self.position))
+        image_tapee = police.render(self.texte[:self.tape], True, ORANGE)
+        image_reste = police.render(self.texte[self.tape:], True, couleur_reste)
+        largeur = image_tapee.get_width() + image_reste.get_width()
+        hauteur = police.get_height()
+        x = self.position.x - largeur / 2
+        y = self.position.y - hauteur / 2
+
+        fond_rect = pygame.Rect(x - 6, y - 2, largeur + 12, hauteur + 4)
+        pygame.draw.rect(ecran, CADRE, fond_rect)
+        if est_cible:
+            pygame.draw.rect(ecran, ORANGE, fond_rect, 2, border_radius=4)
+
+        ecran.blit(image_tapee, (x, y))
+        ecran.blit(image_reste, (x + image_tapee.get_width(), y))
+       
 
 
 # =============================================================================
@@ -238,9 +255,13 @@ class Laser:
 
     def dessiner(self, ecran):
         # TODO 8 : ratio = temps_restant / DUREE_LASER (entre 1 et 0).
-        #   Melanger CYAN et FOND selon ce ratio, epaisseur = 1 + 3 * ratio,
+        #   Melanger CYAN et FOND selon ce ratio, epaisseur = int(1 + 3 * ratio)
+        #   (pygame exige des ENTIERS pour l'epaisseur et les composantes RGB),
         #   puis pygame.draw.line(ecran, couleur, depart, arrivee, epaisseur)
-        pass
+        ratio = max(0.0, self.temps_restant / DUREE_LASER)
+        couleur = tuple(int(f + (c - f) * ratio) for c, f in zip(CYAN, FOND))
+        epaisseur = int(1 + 3 * ratio)
+        pygame.draw.line(ecran, couleur, self.depart, self.arrivee, epaisseur)
 
 
 # =============================================================================
@@ -325,7 +346,7 @@ class Jeu:
                 if distance < meilleure_distance:
                     meilleur = mot
                     meilleure_distance = distance
-                    
+
         return meilleur
 
     def gerer_frappe(self, lettre):
@@ -336,7 +357,23 @@ class Jeu:
         #   frappe correcte, orienter le canon, ajouter un Laser du bout
         #   du canon jusqu'au mot, et detruire le mot s'il est termine.
         #   3) Sinon : rater().
-        pass
+        if self.cible is None:
+            self.cible = self.chercher_cible(lettre)
+            if self.cible is None:
+                self.rater()
+                return
+
+        if self.cible.taper(lettre):
+            self.frappes_correctes += 1
+            self.joueur.viser(self.cible.position)
+            self.lasers.append(Laser(self.joueur.bout_du_canon(),
+                                     self.cible.position))
+            if self.cible.est_termine():
+                self.detruire(self.cible)
+        else:
+            self.rater()
+        
+            
 
     def changer_de_cible(self):
         if self.cible is not None:
@@ -349,7 +386,7 @@ class Jeu:
 
     def multiplicateur(self):
         # TODO 9a : 1 + combo // COMBO_PAR_PALIER, plafonne a MULTIPLICATEUR_MAX
-        return 1
+        return min(1 + self.combo // COMBO_PAR_PALIER, MULTIPLICATEUR_MAX)
 
     def detruire(self, mot):
         """Le mot est entierement tape : on le retire et on marque des points."""
@@ -359,6 +396,14 @@ class Jeu:
         #   score (+ POINTS_PAR_LETTRE par lettre, x multiplicateur).
         #   Puis recalculer le niveau ; s'il augmente, lancer le message.
         self.mots_detruits += 1
+        self.combo += 1
+        self.meilleur_combo = max(self.meilleur_combo, self.combo)
+        self.score += POINTS_PAR_LETTRE * len(mot.texte) * self.multiplicateur()
+
+        nouveau_niveau = 1 + self.mots_detruits // MOTS_PAR_NIVEAU
+        if nouveau_niveau > self.niveau:
+            self.niveau = nouveau_niveau
+            self.message_niveau = DUREE_MESSAGE_NIVEAU
 
     # --- Statistiques -------------------------------------------------
     def precision(self):
