@@ -10,17 +10,21 @@ plus vite : il faut les **taper** pour les détruire avant qu'ils ne touchent vo
 
 ## 🎯 Modalités d'évaluation
 
-- 🗓️ **Date limite de rendu** : **à préciser en cours**
+- 🗓️ **Date limite de rendu** : **15 novembre 2026**
 - 📦 **Format attendu** : un **dossier compressé (.zip)** nommé **Prenom.Nom.zip**
 - 📧 **Envoi du projet** : le dossier `.zip` doit être envoyé **par mail** à l'adresse suivante :
   👉 **louis.mougenot@edu.univ-fcomte.fr**
 - 📁 **Contenu obligatoire du dossier** :
   1. Un **seul fichier Python** contenant le jeu complet et **commenté**, nommé `prenomnom.py`
   2. Un dossier **`assets/`** contenant **toutes les ressources** utilisées (images, sons, `mots.txt`…), s'il y en a
-  3. Un **fichier de documentation** (format libre : `.md`, `.pdf` ou `.txt`) détaillant :
+  3. Un **compte rendu d'utilisation de l'IA au format PDF**, nommé `compte_rendu_IA.pdf`, détaillant :
      - Le **prompt** utilisé pour demander de l'aide à l'IA
      - Les **extraits de code** générés ou inspirés par l'IA
      - Une **explication claire** de **comment** ces éléments ont été **intégrés et adaptés** dans le code final
+
+     👉 Suivez le [guide du compte rendu IA](ressource_etudiant/Guide_compte_rendu_utilisation_IA.pdf).
+     Rédigez-le avec l'outil de votre choix (Word, LibreOffice, LaTeX…) puis **exportez-le en PDF** :
+     un fichier `.md`, `.txt` ou `.docx` n'est pas accepté.
 
 > ⚠️ Le dossier doit être complet et exécutable tel quel.
 > L'absence d'un des éléments ou une structure différente entraînera une pénalité.
@@ -36,7 +40,7 @@ Prenom.Nom/
 │   ├── mots.txt
 │   └── explosion.wav
 │
-└── utilisation_IA.md       # Fichier expliquant l'usage de l'IA (prompt, code, intégration)
+└── compte_rendu_IA.pdf     # Compte rendu de l'usage de l'IA (prompts, code, intégration)
 ```
 
 ---
@@ -60,7 +64,8 @@ Prenom.Nom/
 | `.zip` mal nommé (autre chose que `Prenom.Nom.zip`) | −2 |
 | Fichier Python mal nommé (autre chose que `prenomnom.py`) ou plusieurs fichiers `.py` | −2 |
 | Structure du dossier différente de l'exemple | −2 |
-| Fichier de documentation IA absent | −8 |
+| Compte rendu IA absent | −8 |
+| Compte rendu IA rendu dans un autre format que PDF, ou mal nommé (autre chose que `compte_rendu_IA.pdf`) | −2 |
 | Fichiers inutiles dans le rendu (`__pycache__`, `.venv`, `.idea`, sauvegardes…) | −1 |
 | Dépendance autre que `pygame` et la bibliothèque standard, non justifiée | −2 |
 
