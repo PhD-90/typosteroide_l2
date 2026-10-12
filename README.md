@@ -45,18 +45,46 @@ Prenom.Nom/
 
 ---
 
-## ⚖️ Barème (sur 40)
+## ⚖️ Évaluation
+
+### 🧾 Calcul de la note finale
+
+La note du module est composée de **trois notes** :
+
+| Épreuve | Quand ? | Points |
+|---|---|:---:|
+| **QCM du TD1** | à la séance de TD1 (déjà passé) | /12 |
+| **Revue de code** (orale, individuelle) | **début de la séance de TP3** | /20 |
+| **Projet** : code + compte rendu IA (grille ci-dessous) | rendu le 15 novembre 2026 à 23 h 59 | /40 |
+| **Total** | | **/72** |
+
+> 🧮 **Note finale sur 20 = (QCM + Revue de code + Projet) × 20 / 72**
+
+### 🔍 Revue de code notée (sur 20) — début du TP3
+
+Au **début de la séance de TP3**, l'enseignant passe voir **chaque étudiant individuellement**, devant son code
+tel qu'il est **à ce moment-là**. Il pose des questions sur le code, par exemple :
+
+- **Pourquoi** avez-vous codé cette partie **comme ça** ? Quelles autres solutions auriez-vous pu choisir ?
+- **Que fait** cette ligne, cette fonction, cette classe ? Que se passe-t-il si on la modifie ou si on la supprime ?
+- Qu'avez-vous **compris** du fonctionnement du jeu (boucle de jeu, `dt`, vecteurs, collisions, classes…) ?
+- Quelles parties ont été faites **avec l'aide de l'IA**, et comment les avez-vous **adaptées** ?
+
+> ⚠️ C'est **votre compréhension** qui est notée, pas la quantité de code. Un code court que vous savez
+> expliquer vaut mieux qu'un long code que vous ne comprenez pas. Venez avec votre projet **à jour et qui se lance**.
+
+### 📦 Projet (sur 40)
 
 > ⚠️ **Le barème est volontairement sévère.** Un jeu qui « marche à peu près » ne vaut pas la moyenne.
 > Chaque point se mérite : **tout ce qui n'est pas vérifiable en lançant le jeu ou en lisant le code n'existe pas**.
 
-### 🚫 Conditions éliminatoires (note = **0/40**)
+#### 🚫 Conditions éliminatoires (note du projet = **0/40**)
 
 - Le jeu **ne se lance pas** avec `python prenomnom.py` depuis le dossier rendu (erreur au démarrage, fichier manquant, chemin absolu vers *votre* ordinateur…).
 - **Plagiat** entre étudiants, ou code repris d'Internet / d'une IA **sans être déclaré** dans la documentation.
 - Projet **non rendu** ou rendu **plus de 3 jours** après la date limite.
 
-### 📉 Pénalités appliquées **avant** la notation
+#### 📉 Pénalités appliquées **avant** la notation
 
 | Manquement | Pénalité |
 |---|---|
@@ -69,7 +97,7 @@ Prenom.Nom/
 | Fichiers inutiles dans le rendu (`__pycache__`, `.venv`, `.idea`, sauvegardes…) | −1 |
 | Dépendance autre que `pygame` et la bibliothèque standard, non justifiée | −2 |
 
-### 🧮 Grille de notation
+#### 🧮 Grille de notation
 
 | Critère | Points | Exigence pour avoir les points |
 |---|:---:|---|
@@ -105,14 +133,14 @@ Prenom.Nom/
 | Participation : questions pertinentes, explication de son code à l'oral, entraide sans copie | 1 | Aucune participation = 0/1 |
 | **Total** | **40** | |
 
-### 🎤 Vérification de la compréhension
+#### 🎤 Vérification de la compréhension
 
 L'enseignant peut demander à n'importe quel étudiant d'**expliquer une ligne ou une fonction** de son code, à l'oral.
 
 - Si l'étudiant **ne sait pas expliquer** un passage, la fonctionnalité correspondante est considérée comme **non réalisée** (0 point sur la ligne du barème).
 - Si l'étudiant ne sait expliquer **aucune partie importante** du code, la note est **plafonnée à 10/40**.
 
-> 💡 La note finale est arrondie **au demi-point inférieur**. Une note négative est ramenée à 0.
+> 💡 La note du projet est arrondie **au demi-point inférieur**. Une note négative est ramenée à 0.
 
 ---
 
@@ -122,7 +150,7 @@ L'enseignant peut demander à n'importe quel étudiant d'**expliquer une ligne o
 |---|---|---|
 | **TD1** | 2 h | Boucle de jeu, vaisseau, mots qui foncent vers le joueur, collisions, vies |
 | TD2 | 2 h | Menu, frappe au clavier, ciblage, lasers, score, difficulté progressive |
-| Projet | 10 h | **En autonomie** : vous enrichissez votre jeu avec les fonctionnalités de votre choix ([catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf)), jusqu'au rendu |
+| Projet | 10 h | **En autonomie** : vous enrichissez votre jeu avec les fonctionnalités de votre choix ([catalogue d'idées](ressource_etudiant/Catalogue_idees_fonctionnalites.pdf)), jusqu'au rendu. ⚠️ **Début du TP3 : revue de code notée** (/20) |
 
 Les fichiers des TD sont ajoutés à ce dépôt au fur et à mesure.
 
