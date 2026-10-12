@@ -10,7 +10,7 @@ plus vite : il faut les **taper** pour les détruire avant qu'ils ne touchent vo
 
 ## 🎯 Modalités d'évaluation
 
-- 🗓️ **Date limite de rendu** : **15 novembre 2026**
+- 🗓️ **Date limite de rendu** : **15 novembre 2026 à 23 h 59**
 - 📦 **Format attendu** : un **dossier compressé (.zip)** nommé **Prenom.Nom.zip**
 - 📧 **Envoi du projet** : le dossier `.zip` doit être envoyé **par mail** à l'adresse suivante :
   👉 **louis.mougenot@edu.univ-fcomte.fr**
