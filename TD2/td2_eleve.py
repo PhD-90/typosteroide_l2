@@ -176,18 +176,22 @@ class Mot:
     def lettre_attendue(self):
         """La prochaine lettre a taper."""
         # TODO 3a : Renvoyer la lettre du texte a l'indice self.tape.
-        return ""
+        return self.texte[self.tape] 
 
     def est_termine(self):
         """True quand toutes les lettres ont ete tapees."""
         # TODO 3b : Comparer self.tape a la longueur du texte.
-        return False
+        return self.tape == len(self.texte)
 
     def taper(self, lettre):
         """Essaie de taper une lettre. Renvoie True si c'etait la bonne."""
         # TODO 3c : Si lettre est la lettre attendue : avancer self.tape,
         #   faire reculer le mot de RECUL pixels (sens oppose a direction)
         #   et renvoyer True. Sinon renvoyer False.
+        if lettre == self.lettre_attendue():
+            self.tape += 1
+            self.position -= self.direction * RECUL
+            return True
         return False
 
     def abandonner(self):
@@ -313,7 +317,16 @@ class Jeu:
         `lettre`, ou None s'il n'y en a pas."""
         # TODO 4 : Parcourir self.mots et garder le plus proche du joueur
         #   parmi ceux dont la 1re lettre est `lettre`.
-        return None
+        meilleur = None
+        meilleure_distance = math.inf
+        for mot in self.mots:
+            if mot.texte[0]==lettre:
+                distance = mot.position.distance_to(self.joueur.position)
+                if distance < meilleure_distance:
+                    meilleur = mot
+                    meilleure_distance = distance
+                    
+        return meilleur
 
     def gerer_frappe(self, lettre):
         """Appelee a chaque lettre tapee pendant la partie."""
@@ -374,7 +387,11 @@ class Jeu:
         if self.etat == "menu":
             # TODO 1a : Menu : Entree -> nouvelle partie puis etat "jeu" ;
             #   Echap -> quitter le programme (self.en_cours = False).
-            pass
+            if entree:
+                self.nouvelle_partie()
+                self.etat = "jeu"
+            elif evenement.key == pygame.K_ESCAPE:
+                self.en_cours = False
 
         elif self.etat == "jeu":
             # TODO 2 : Partie : Echap -> etat "menu" ; Retour arriere ->
@@ -383,11 +400,20 @@ class Jeu:
             #   "a".isalpha() vaut True, "\r".isalpha() vaut False
             if evenement.key == pygame.K_ESCAPE:
                 self.etat = "menu"
+            elif evenement.key == pygame.K_BACKSPACE:
+                self.changer_de_cible()
+            elif evenement.unicode.isalpha():
+                self.gerer_frappe(evenement.unicode.lower())
 
         elif self.etat == "game_over":
             # TODO 1b : Fin de partie : Entree -> nouvelle partie + "jeu" ;
             #   Echap -> retour au menu.
-            pass
+            if entree:
+                self.nouvelle_partie()
+                self.etat = "jeu"
+            elif evenement.key == pygame.K_ESCAPE:
+                self.etat = "menu"
+            
 
     # ------------------------------------------------------------------ #
     #  2) Mise a jour                                                    #
@@ -428,7 +454,10 @@ class Jeu:
 
         # TODO 1c : Si le joueur n'est plus vivant : mettre a jour
         #   self.meilleur_score et passer dans l'etat "game_over".
-        pass
+        if not self.joueur.est_vivant():
+            self.meilleur_score = max(self.meilleur_score, self.score)
+            self.etat = "game_over"
+
 
     # ------------------------------------------------------------------ #
     #  3) Dessin                                                         #
